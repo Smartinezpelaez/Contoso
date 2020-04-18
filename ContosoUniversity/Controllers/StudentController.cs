@@ -1,11 +1,10 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using ContosoUniversity.Services;
-using ContosoUniversity.Models;
-using ContosoUniversity.Services.Implements;
+﻿using AutoMapper;
 using ContosoUniversity.DTOs;
-using AutoMapper;
+using ContosoUniversity.Models;
+using ContosoUniversity.Services;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ContosoUniversity.Controllers
 {
@@ -21,7 +20,7 @@ namespace ContosoUniversity.Controllers
             this.mapper = mapper;
         }
 
-        public async Task <IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             var data = await studentService.GetAll();
 
@@ -106,7 +105,6 @@ namespace ContosoUniversity.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
          if (id == null)
-
           return NotFound();
 
         await studentService.Delete(id.Value);         

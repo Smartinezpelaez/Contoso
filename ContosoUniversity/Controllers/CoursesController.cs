@@ -1,6 +1,9 @@
-﻿using ContosoUniversity.Models;
+﻿using AutoMapper;
+using ContosoUniversity.DTOs;
+using ContosoUniversity.Models;
 using ContosoUniversity.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ContosoUniversity.Controllers
@@ -8,33 +11,43 @@ namespace ContosoUniversity.Controllers
     public class CoursesController : Controller
     {
         private ICourseService courseService;
+        private readonly IMapper mapper;
 
-        public CoursesController(ICourseService courseService)
+        public CoursesController(ICourseService courseService,
+            IMapper mapper)
         {
             this.courseService = courseService;
+            this.mapper = mapper;
         }
 
         // GET: Courses
         public async Task<IActionResult> Index()
         {
-            return View(await courseService.GetAll());
+            var data = await courseService.GetAll();
+
+            var listCourse = data.Select(x => mapper.Map<CourseDTO>(x)).ToList();
+
+            return View(listCourse);
+
+            // return View(await courseService.GetAll());
         }
 
+        
+        
         // GET: Courses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null)            
+                return NotFound();            
 
             var course = await courseService.GetById(id.Value);
-            if (course == null)
-            {
-                return NotFound();
-            }
 
-            return View(course);
+            if (course == null)            
+                return NotFound();
+
+            var courseDTO = mapper.Map<CourseDTO>(course);
+
+            return View(courseDTO);
         }
 
         // GET: Courses/Create
@@ -43,72 +56,69 @@ namespace ContosoUniversity.Controllers
             return View();
         }
 
-        // POST: Courses/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CourseID,Title,Credits")] Course course)
+        public async Task<IActionResult> Create(CourseDTO courseDTO)
         {
             if (ModelState.IsValid)
             {
-                await courseService.Insert(course);
+                //Forma larga de implementar el DTO
+                // var student = new Student
+                // {
+                //   FirstMidName = studentDTO.FirstMidName,
+                // LastName = studentDTO.LastName,
+                //EnrollmentDate = studentDTO.EnrollmentDate
+                // };
 
-                return RedirectToAction(nameof(Index));
+                var course = mapper.Map<Course>(courseDTO);
+                course = await courseService.Insert(course);
+                var id = course.CourseID;
+                return RedirectToAction("Index");
             }
-            return View(course);
+            return View(courseDTO);
         }
 
         // GET: Courses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null)            
+                return NotFound();            
 
             var course = await courseService.GetById(id.Value);
-            if (course == null)
-            {
+
+            if (course == null)            
                 return NotFound();
-            }
-            return View(course);
+
+            var courseDTO = mapper.Map<CourseDTO>(course);
+            return View(courseDTO);
         }
 
-        // POST: Courses/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CourseID,Title,Credits")] Course course)
-        {
-            if (id != course.CourseID)
-            {
-                return NotFound();
-            }
 
+        [HttpPost]
+        public async Task<IActionResult> Edit(CourseDTO coursetDTO)
+        {
             if (ModelState.IsValid)
             {
-                await courseService.Update(course);
+                var course = mapper.Map<Course>(coursetDTO);
 
-                return RedirectToAction(nameof(Index));
+                course = await courseService.Update(course);
+                return RedirectToAction("Index");
+
             }
-            return View(course);
+            return View(coursetDTO);
         }
 
         // GET: Courses/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null)            
+                return NotFound();            
 
             var course = await courseService.GetById(id.Value);
-            if (course == null)
-            {
+
+            if (course == null)            
                 return NotFound();
-            }
+            
 
             return View(course);
         }
