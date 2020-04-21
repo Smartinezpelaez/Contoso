@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ContosoUniversity.Models;
+﻿using ContosoUniversity.Models;
 using ContosoUniversity.Repositories;
-using ContosoUniversity.Repositories.Implements;
 
 namespace ContosoUniversity.Services.Implements
 {
