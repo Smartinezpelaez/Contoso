@@ -7,14 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ContosoUniversity.Data;
 using ContosoUniversity.Models;
-using AutoMapper;
 
 namespace ContosoUniversity.Controllers
 {
     public class EnrollmentsController : Controller
     {
         private readonly SchoolContext _context;
-
 
         public EnrollmentsController(SchoolContext context)
         {

@@ -1,5 +1,7 @@
 ﻿using ContosoUniversity.Models;
 using ContosoUniversity.Repositories;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ContosoUniversity.Services.Implements
 {
@@ -10,6 +12,11 @@ namespace ContosoUniversity.Services.Implements
         public CourseService(ICourseRepository courseRepository) : base(courseRepository)
         {
             this.courseRepository = courseRepository;
+        }
+
+        public async Task<IEnumerable<Student>> GetStudentsByCourse(int id)
+        {
+            return await courseRepository.GetStudentsByCourse(id);
         }
     }
 }

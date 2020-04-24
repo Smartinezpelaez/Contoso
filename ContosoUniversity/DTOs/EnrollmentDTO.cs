@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ContosoUniversity.Models;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -25,5 +26,15 @@ namespace ContosoUniversity.DTOs
         [Required(ErrorMessage = ("The Grade is required"))]
         [Display(Name = ("Grade"))]
         public Grade? Grade { get; set; }
+
+
+        [Required(ErrorMessage = ("The Course is required"))]
+        [Display(Name = ("Course"))]
+        public Course Course { get; set; }
+
+        [Required(ErrorMessage = ("The Student is required"))]
+        [Display(Name = ("Student"))]
+        public Student Student { get; set; }
+
     }
 }

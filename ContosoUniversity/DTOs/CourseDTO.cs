@@ -14,10 +14,13 @@ namespace ContosoUniversity.DTOs
 
             [Required(ErrorMessage = ("The Credits is required"))]
             [Display(Name = ("Credits"))]
-            public int Credits { get; set; }               
+            public int Credits { get; set; }
+
 
                 
-       
+
+
+
 
     }
 }
