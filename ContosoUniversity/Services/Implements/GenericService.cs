@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 namespace ContosoUniversity.Services.Implements
 {
     public class GenericService<TEntity> : IGenericService<TEntity> where TEntity : class
-
-    {
-
-
+            {
+        
         private IGenericRepository<TEntity> genericRepository;
 
         public GenericService(IGenericRepository<TEntity> genericRepository)

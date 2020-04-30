@@ -44,7 +44,7 @@ namespace ContosoUniversity
             //Reposiories
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
-            services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
+          //  services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
 
             //Services
 

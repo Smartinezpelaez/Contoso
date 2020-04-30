@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
-namespace ContosoUniversity.Services
+namespace ContosoUniversity.Repositories
 {
-   public  interface IEnrollmentService : IGenericService<Enrollment>
+    public interface IEnrollmetnRepository : IGenericRepository<Enrollment>
     {
-
 
     }
 }

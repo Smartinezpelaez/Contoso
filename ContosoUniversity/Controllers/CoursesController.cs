@@ -32,7 +32,6 @@ namespace ContosoUniversity.Controllers
             }            
             var data = await courseService.GetAll();
             var listCourse = data.Select(x => mapper.Map<CourseDTO>(x)).ToList();
-
             return View(listCourse);
 
            

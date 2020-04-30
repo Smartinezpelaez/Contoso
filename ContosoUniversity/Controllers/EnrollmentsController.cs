@@ -1,26 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ContosoUniversity.Data;
+using ContosoUniversity.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ContosoUniversity.Data;
-using ContosoUniversity.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ContosoUniversity.Controllers
 {
     public class EnrollmentsController : Controller
     {
         private readonly SchoolContext _context;
+       
+
 
         public EnrollmentsController(SchoolContext context)
         {
             _context = context;
+           
         }
+       
+
+       // public async Task<IEnumerable<Enrollment>> GetCourseByEnrollment(int id)
+
+       // {          
+           
+
+           // var listEnrollments = await (from course in _context.Courses
+            //                          join enrollment in _context.Enrollments on course.CourseID equals enrollment.EnrollmentID
+                 //                        where course.CourseID == id
+                //                      select enrollment).ToListAsync();
+            //return listEnrollments;
+
+       // }
 
         // GET: Enrollments
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
             var schoolContext = _context.Enrollments.Include(e => e.Course).Include(e => e.Student);
             return View(await schoolContext.ToListAsync());
