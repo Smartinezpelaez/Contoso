@@ -44,13 +44,15 @@ namespace ContosoUniversity
             //Reposiories
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
-          //  services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
+            services.AddScoped<IEnrollmetnRepository, EnrollmentRepository>();
+            services.AddScoped<IInstructorRepository, InstructorRepository>();
 
             //Services
 
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IEnrollmentService, EnrollmentService>();
+            services.AddScoped<IInstructorService, InstructorService>();
 
             //AutoMapper
 

@@ -19,11 +19,22 @@ namespace ContosoUniversity.Repositories.Implements
             this.schoolContext = schoolContext;
         }
 
-        //public async Task<IActionResult> Index(int? id)
-       // {
-           // var schoolContext = _context.Include(e => e.Course).Include(e => e.Student);
-           // return View(await schoolContext.ToListAsync());
-       // }
+
+        public new async Task<List<Enrollment>> GetAll()
+        {
+            var listEnrollments = await schoolContext.Enrollments
+                .Include(x => x.Course)
+                .Include(x => x.Student)
+                .ToListAsync();
+
+            //var listEnrollments = await (from enrollments in schoolContext.Enrollments
+            //                             join course in schoolContext.Courses on enrollments.CourseID equals course.CourseID
+            //                             join student in schoolContext.Students on enrollments.StudentID equals student.ID
+            //                             select enrollments).ToListAsync();
+
+            // return await schoolContext.Enrollments.ToListAsync();
+            return listEnrollments;
+        }
 
     }
 }

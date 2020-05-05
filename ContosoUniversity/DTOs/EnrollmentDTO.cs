@@ -1,32 +1,30 @@
 ﻿using ContosoUniversity.Models;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ContosoUniversity.DTOs
 {
-    public enum Grade
-    {
-        A, B, C, D, F
-    }
-
     public class EnrollmentDTO
     {
 
         public int EnrollmentID { get; set; }
 
-        [Required(ErrorMessage = ("The CourseID is required"))]
-        [Display(Name = ("CourseID"))]
+        [Required(ErrorMessage = "The Course ID is required")]
+        [Display(Name = "Course ID")]
         public int CourseID { get; set; }
 
-        [Required(ErrorMessage = ("The Last Name is required"))]
-        [Display(Name = ("StudentID"))]
-        public int StudentID { get; set; }
+        [Required(ErrorMessage = "The Student ID  required")]
+        [Display(Name = "Student ID")]
+        public string StudentID { get; set; }
 
-        [Required(ErrorMessage = ("The Grade is required"))]
-        [Display(Name = ("Grade"))]
         public Grade? Grade { get; set; }
 
-       
+        public Course Course { get; set; }
+
+        public Student Student { get; set; }
 
     }
 }
