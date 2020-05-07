@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AutoMapper;
+using ContosoUniversity.DTOs;
+using ContosoUniversity.Models;
+using ContosoUniversity.Services;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using ContosoUniversity.Data;
-using ContosoUniversity.Models;
-using AutoMapper;
-using ContosoUniversity.Services;
-using ContosoUniversity.DTOs;
 
 namespace ContosoUniversity.Controllers
 {

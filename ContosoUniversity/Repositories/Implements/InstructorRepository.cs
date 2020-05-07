@@ -29,10 +29,7 @@ namespace ContosoUniversity.Repositories.Implements
         }
         public async Task<IEnumerable<Course>> GetCursosByInstructor(int id)
         {
-            //  SELECT S.*
-            //FROM[dbo].[Enrollment]     E
-            // JOIN[dbo].[Course] S ON S.CourseID	=	E.CourseID
-            // WHERE E.StudentID = 1;
+            
 
             var listCursos = await (from courseInstructor in schoolContext.CourseInstructor
                                     join course in schoolContext.Courses on courseInstructor.CourseID equals course.CourseID
@@ -45,10 +42,7 @@ namespace ContosoUniversity.Repositories.Implements
 
         public async Task<IEnumerable<Enrollment>> GetEnrollmentsByCurso(int id)
         {
-            //  SELECT S.*
-            //FROM[dbo].[Enrollment]     E
-            // JOIN[dbo].[Course] S ON S.CourseID	=	E.CourseID
-            // WHERE E.StudentID = 1;
+           
 
             var listEnrollments = await schoolContext.Enrollments
                          .Include(x => x.Student)

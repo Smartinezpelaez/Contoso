@@ -19,5 +19,14 @@ namespace ContosoUniversity.Models
         public OfficeAssignment OfficeAssignment { get; set; }
         public ICollection<CourseInstructor> CourseInstructor { get; set; }
         public ICollection<Department> Department { get; set; }
+
+        public string FullName
+        {
+            get
+            {
+                return string.Format("{0} {1}", LastName, FirstMidName);
+
+            }
+        }
     }
 }

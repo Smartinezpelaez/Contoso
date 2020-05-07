@@ -1,17 +1,12 @@
-﻿using ContosoUniversity.Data;
-using ContosoUniversity.Models;
+﻿using ContosoUniversity.Models;
 using ContosoUniversity.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ContosoUniversity.Controllers
 {
-    
-        public class EnrollmentsController : Controller
+
+    public class EnrollmentsController : Controller
         {
 
             public EnrollmentsController(IEnrollmentService enrollmentService,

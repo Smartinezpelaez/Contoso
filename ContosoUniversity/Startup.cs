@@ -46,6 +46,8 @@ namespace ContosoUniversity
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IEnrollmetnRepository, EnrollmentRepository>();
             services.AddScoped<IInstructorRepository, InstructorRepository>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IOfficeAssignmentRepository, OfficeAssignmentRepository>();
 
             //Services
 
@@ -53,6 +55,8 @@ namespace ContosoUniversity
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IEnrollmentService, EnrollmentService>();
             services.AddScoped<IInstructorService, InstructorService>();
+            services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<IOfficeAssignmentService, OfficeAssignmentService>();
 
             //AutoMapper
 

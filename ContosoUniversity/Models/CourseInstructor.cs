@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ContosoUniversity.Models
+﻿namespace ContosoUniversity.Models
 {
     public partial class CourseInstructor
     {
