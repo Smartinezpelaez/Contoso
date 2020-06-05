@@ -1,4 +1,4 @@
-﻿@model ContosoUniversity.Models.Instructor
+﻿@model ContosoUniversity.DTOs.InstructorDTO
 
 @{
     ViewData["Title"] = "Details";
@@ -23,10 +23,10 @@
             @Html.DisplayFor(model => model.FirstMidName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.HireDate)
+            @Html.DisplayNameFor(model => model.Hiredate)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.HireDate)
+            @Html.DisplayFor(model => model.Hiredate)
         </dd>
     </dl>
 </div>

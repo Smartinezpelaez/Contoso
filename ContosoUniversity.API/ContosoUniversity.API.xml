@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ContosoUniversity.API</name>
+    </assembly>
+    <members>
+        <member name="M:ContosoUniversity.API.Controllers.StudentsController.GetById(System.Nullable{System.Int32})">
+            <summary>
+            Obtiene un Objeto de estudiante por su id.
+            </summary>
+            <remark>
+            Aqui una descripcion larga si nfuera necesaria. Obtiene un objeto estudiante por su id.
+            </remark>
+            <param name="id">id (GUID) del objeto </param>
+            <response code ="200">OK. Devuelve el objeto solicitado </response>
+            <response code ="404">Not Found. No se encontro el objeto solicitado </response>
+            <returns></returns>
+        </member>
+        <member name="T:ContosoUniversity.API.Models.User">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>
